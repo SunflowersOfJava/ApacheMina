@@ -1,12 +1,12 @@
 # ApacheMina
 Apache Mina是一个能够帮助用户开发高性能和高伸缩性网络应用程序的框架。它通过Javanio技术基于TCP/IP和UDP/IP协议提供了抽象的、事件驱动的、异步的API。<br/><br/>
 
-ApacheMINA是一个网络应用程序框架，用来帮助用户简单地开发高性能和高可扩展性的网络应用程序。它提供了一个通过Java<br/> NIO在不同的传输例如TCP/IP和UDP/IP上抽象的事件驱动的异步API。<br/>
+ApacheMINA是一个网络应用程序框架，用来帮助用户简单地开发高性能和高可扩展性的网络应用程序。它提供了一个通过Java NIO在不同的传输例如TCP/IP和UDP/IP上抽象的事件驱动的异步API。<br/>
 #Apache MINA 别称
 ● NIO 框架库<br/>
 ● 客户端服务器框架库<br/>
 ● 一个网络套接字库<br/>
-#MINA虽然简单但是仍然提供了全功能的网络应用程序框架：
+#MINA网络应用程序框架
 ● 为不同的传输类型提供了统一的API:<br/>
 ○ 通过Java NIO提供TCP/IP 和 UDP/IP支持<br/>
 ○ 通过RXTX提供串口通讯(RS232)<br/>
