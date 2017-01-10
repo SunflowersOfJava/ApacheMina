@@ -1,32 +1,24 @@
 package com.boonya.mina.protocol.selfdefine.codecfactory;
 
 import java.nio.charset.Charset;
-import org.apache.mina.core.session.IoSession;
-import org.apache.mina.filter.codec.ProtocolDecoder;
-import org.apache.mina.filter.codec.ProtocolEncoder;
 import org.apache.mina.filter.codec.demux.DemuxingProtocolCodecFactory;
+import org.apache.mina.filter.codec.demux.MessageDecoder;
+import com.boonya.mina.protocol.selfdefine.bean.FileProtocol;
 import com.boonya.mina.protocol.selfdefine.decoder.FileMessageDecoder;
 import com.boonya.mina.protocol.selfdefine.encoder.FileMessageEncoder;
 
 public class FileMessageCodecFactory extends DemuxingProtocolCodecFactory {
 	
-	private FileMessageDecoder decoder;
-	
+	private MessageDecoder decoder;
+	 
 	private FileMessageEncoder encoder;
 
 	public FileMessageCodecFactory() {
 		this.decoder = new FileMessageDecoder(Charset.forName("utf-8"));
 		this.encoder = new FileMessageEncoder(Charset.forName("utf-8"));
+		addMessageEncoder(FileProtocol.class, this.encoder);
+		addMessageDecoder(this.decoder);
 	}
-
-	@Override
-	public ProtocolDecoder getDecoder(IoSession session) throws Exception {
-		return (ProtocolDecoder) decoder;
-	}
-
-	@Override
-	public ProtocolEncoder getEncoder(IoSession session) throws Exception {
-		return (ProtocolEncoder) encoder;
-	}
-
+	
+	
 }

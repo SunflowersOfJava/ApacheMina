@@ -24,8 +24,7 @@ public class FileMessageServer {
 			acceptor = new NioSocketAcceptor();
 
 			// 设置过滤器（添加自带的编解码器）
-			acceptor.getFilterChain().addLast("codec",
-					new ProtocolCodecFilter(new FileMessageCodecFactory()));
+			acceptor.getFilterChain().addLast("codec",new ProtocolCodecFilter(new FileMessageCodecFactory()));
 			// 设置日志过滤器
 			LoggingFilter lf = new LoggingFilter();
 			lf.setMessageReceivedLogLevel(LogLevel.DEBUG);
@@ -39,7 +38,7 @@ public class FileMessageServer {
 			acceptor.setHandler(new FileMessageServerHandler());
 			// 绑定端口
 			acceptor.bind(new InetSocketAddress(PORT));
-			System.out.println("成功开启服务器端...");
+			System.out.println("服务器端成功监听端口:"+PORT);
 
 		} catch (Exception e) {
 

@@ -1,59 +1,43 @@
 package com.boonya.mina.protocol.selfdefine.handler;
 
-import org.apache.mina.core.service.IoHandler;
-import org.apache.mina.core.session.IdleStatus;
+import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
+import com.boonya.mina.protocol.selfdefine.bean.Message;
 
-public class FileMessageClientHandler  implements IoHandler {
+public class FileMessageClientHandler  extends IoHandlerAdapter{
 
-	@Override
-	public void sessionCreated(IoSession session) throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void sessionOpened(IoSession session) throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void sessionClosed(IoSession session) throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void sessionIdle(IoSession session, IdleStatus status)
-			throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void exceptionCaught(IoSession session, Throwable cause)
-			throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
+	/**
+	 * 	接收消息
+	 */
 	public void messageReceived(IoSession session, Object message)
 			throws Exception {
-		//System.out.println(message.toString());
+		System.out.println("客户端接收到的消息：" + (Message)message);
 	}
 
-	@Override
+	/**
+	 * 	发送消息
+	 */
 	public void messageSent(IoSession session, Object message) throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void inputClosed(IoSession session) throws Exception {
-		// TODO Auto-generated method stub
+		System.out.println("客户端发送消息...");
+		super.messageSent(session, message);
 		
 	}
 
+	/**
+	 * 	会话创建
+	 */
+	public void sessionOpened(IoSession session) throws Exception {
+		
+		System.out.println("客户端已经连接到了服务器...");
+		
+	}
+
+	/**
+	 * 	会话关闭
+	 */
+	public void sessionClosed(IoSession session) throws Exception {
+		System.out.println("连接关闭...");
+		super.sessionClosed(session);
+	}
+	
 }

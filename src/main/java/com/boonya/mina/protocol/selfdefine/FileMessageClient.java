@@ -23,14 +23,12 @@ public class FileMessageClient {
 		// 设置链接超时时间
 		connector.setConnectTimeoutMillis(30000);
 		// 添加过滤器
-		connector.getFilterChain().addLast("codec",
-				new ProtocolCodecFilter(new FileMessageCodecFactory()));
+		connector.getFilterChain().addLast("codec",new ProtocolCodecFilter(new FileMessageCodecFactory()));
 		// 添加业务逻辑处理器类
 		connector.setHandler(new FileMessageClientHandler());
 		IoSession session = null;
 		try {
-			ConnectFuture future = connector.connect(new InetSocketAddress(
-					HOST, PORT));// 创建连接
+			ConnectFuture future = connector.connect(new InetSocketAddress(	HOST, PORT));// 创建连接
 			future.awaitUninterruptibly();// 等待连接创建完成
 			session = future.getSession();// 获得session
 

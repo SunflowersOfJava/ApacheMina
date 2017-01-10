@@ -20,6 +20,7 @@ public class FileMessageEncoder implements MessageEncoder<FileProtocol>{
 	@Override
 	public void encode(IoSession session, FileProtocol message,
 			ProtocolEncoderOutput out) throws Exception {
+		System.out.println(">>>>>>开始执行编码工作....................!");
 		
 		IoBuffer buf=IoBuffer.allocate(1024).setAutoExpand(true);
 		
