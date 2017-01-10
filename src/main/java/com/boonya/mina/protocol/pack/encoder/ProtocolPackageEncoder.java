@@ -20,6 +20,22 @@ public class ProtocolPackageEncoder extends ProtocolEncoderAdapter {
 	// 用于打印日志信息
 	private final static Logger log = LoggerFactory.getLogger(ProtocolPackageEncoder.class);
 
+	/*@Override
+	public void encode(IoSession session, Object message,
+			ProtocolEncoderOutput out) throws Exception {
+
+		String msg = (String) message;
+		byte[] bytes = msg.getBytes("UTF-8");
+		int length = bytes.length;
+		byte[] header = LittleEndian.toLittleEndian(length); // 按小字节序转成字节数组
+
+		IoBuffer buffer = IoBuffer.allocate(length + 4);
+		buffer.put(header); // header
+		buffer.put(bytes); // body
+		buffer.flip();
+		out.write(buffer);
+	}*/
+
 	// 编码 将数据包转成字节数组
 	@Override
 	public void encode(IoSession session, Object message,
