@@ -1,32 +1,38 @@
 package com.boonya.mina.quickstart.push;
 
-import java.util.Date;
+import java.util.Collection;
 import org.apache.log4j.Logger;
+import org.apache.mina.core.IoUtil;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 
 /**
- * IoHandler消息处理类
+ * IoHandler消息处理类-发布订阅模式
  * 
- * 如要整合spring可参考：mina整合spring ，服务端反向发送消息到客户端
- * 完整实例-http://www.itnose.net/detail/6143868.html
- * 
- * @packge com.boonya.mina.quickstart.PushIoHandler
- * @date 2016年6月2日 下午2:17:50
+ * @package com.boonya.mina.quickstart.push.ServerHandler
+ * @date   2017年1月10日  下午4:04:08
  * @author pengjunlin
- * @comment Mina与Android客户端实现长连接http://www.tuicool.com/articles/e6FBRvN
+ * @comment   
  * @update
  */
-public class PushIoHandler extends IoHandlerAdapter {
+public class ServerHandler extends IoHandlerAdapter {
 
-	public static Logger logger = Logger.getLogger(PushIoHandler.class);
+	public static Logger logger = Logger.getLogger(ServerHandler.class);
 
 	// 从端口接受消息，会响应此方法来对消息进行处理
-	@SuppressWarnings("deprecation")
 	@Override
 	public void messageReceived(IoSession session, Object message)
 			throws Exception {
+		
+		////////////////////发布/订阅//////////////////////
+		 // 获取所有正在连接的IoSession
+        Collection<IoSession> sessions = session.getService().getManagedSessions().values();
+        // 将消息写到所有IoSession
+        IoUtil.broadcast(message, sessions);
+		////////////////////发布/订阅//////////////////////
+		
+		/*
 		String msg = message.toString();
 		if ("exit".equals(msg)) {
 			// 如果客户端发来exit，则关闭该连接
@@ -36,7 +42,7 @@ public class PushIoHandler extends IoHandlerAdapter {
 		Date date = new Date();
 		session.write(date);
 		logger.info("服务器接受消息成功...");
-		super.messageReceived(session, message);
+		super.messageReceived(session, message);*/
 	}
 
 	// 向客服端发送消息后会调用此方法

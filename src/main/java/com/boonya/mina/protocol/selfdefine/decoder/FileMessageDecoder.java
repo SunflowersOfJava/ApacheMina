@@ -21,7 +21,7 @@ public class FileMessageDecoder implements MessageDecoder{
 	@Override
 	public MessageDecoderResult decodable(IoSession session, IoBuffer in) {
 
-		//System.out.println("package size:"+in.remaining());
+		System.out.println("package size:"+in.remaining());
 		// 报头长度<56
 		if (in.remaining() < 56) {
 			return MessageDecoderResult.NEED_DATA;
@@ -33,7 +33,7 @@ public class FileMessageDecoder implements MessageDecoder{
 		if (tag == (short) 0x01) {
 			System.out.println("请求标识符："+tag+" head length:"+head_len);
 		}else{
-			//System.out.println("未知标识符...");
+			System.out.println("未知标识符...");
 			return MessageDecoderResult.NOT_OK;
 		}
 
@@ -43,6 +43,8 @@ public class FileMessageDecoder implements MessageDecoder{
 	@Override
 	public MessageDecoderResult decode(IoSession session, IoBuffer in,
 			ProtocolDecoderOutput out) throws Exception {
+		
+		System.out.println(">>>>>>开始执行解码工作....................!");
 		byte tag=in.get();
 	
 		if(tag==0x01){
@@ -66,7 +68,7 @@ public class FileMessageDecoder implements MessageDecoder{
 	public void finishDecode(IoSession session, ProtocolDecoderOutput out)
 			throws Exception {
 		// TODO Auto-generated method stub
-
+		System.out.println("完成解码工作.........");
 	}
 
 }
