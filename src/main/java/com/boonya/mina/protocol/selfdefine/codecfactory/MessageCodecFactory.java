@@ -1,4 +1,4 @@
-package com.boonya.mina.protocol.selfdefine.coderfactory;
+package com.boonya.mina.protocol.selfdefine.codecfactory;
 
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolCodecFactory;
@@ -11,12 +11,12 @@ import com.boonya.mina.protocol.selfdefine.encoder.MessageEncoder;
 /**
  *	编解码工厂
  */
-public class MessageCoderFactory implements ProtocolCodecFactory{
+public class MessageCodecFactory implements ProtocolCodecFactory{
 	
 	private MessageDecoder decoder;
 	private MessageEncoder encoder;
 
-	public MessageCoderFactory() {
+	public MessageCodecFactory() {
 		this.decoder = new MessageDecoder();
 		this.encoder = new MessageEncoder();
 	}

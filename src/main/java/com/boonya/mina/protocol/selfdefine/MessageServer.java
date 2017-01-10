@@ -3,13 +3,15 @@ package com.boonya.mina.protocol.selfdefine;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
+
 import org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
-import com.boonya.mina.protocol.selfdefine.coderfactory.MessageCoderFactory;
+
+import com.boonya.mina.protocol.selfdefine.codecfactory.MessageCodecFactory;
 import com.boonya.mina.protocol.selfdefine.handler.MessageServerHandler;
 
 /**
@@ -41,7 +43,7 @@ public class MessageServer {
 
 		// 　配置自定义的编解码器　
 		chain.addLast("codec", new ProtocolCodecFilter(
-				new MessageCoderFactory()));
+				new MessageCodecFactory()));
 
 		// 添加数据处理的处理器
 		acceptor.setHandler(new MessageServerHandler());

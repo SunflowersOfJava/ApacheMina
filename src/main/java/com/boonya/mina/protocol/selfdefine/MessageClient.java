@@ -3,13 +3,15 @@ package com.boonya.mina.protocol.selfdefine;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
+
 import org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder;
 import org.apache.mina.core.future.ConnectFuture;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketConnector;
+
 import com.boonya.mina.protocol.selfdefine.bean.Message;
-import com.boonya.mina.protocol.selfdefine.coderfactory.MessageCoderFactory;
+import com.boonya.mina.protocol.selfdefine.codecfactory.MessageCodecFactory;
 import com.boonya.mina.protocol.selfdefine.handler.MessageClientHandler;
 
 /**
@@ -38,7 +40,7 @@ public class MessageClient {
 
 		// 配置日志过滤器和自定义编解码器
 		chain.addLast("logger", new LoggingFilter());
-		chain.addLast("codec", new ProtocolCodecFilter(	new MessageCoderFactory()));
+		chain.addLast("codec", new ProtocolCodecFilter(	new MessageCodecFactory()));
 
 		// 添加处理器
 		connector.setHandler(new MessageClientHandler());
