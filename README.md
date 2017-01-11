@@ -46,6 +46,6 @@ ApacheMINA是一个网络应用程序框架，用来帮助用户简单地开发�
 Apache Mina源代码
 
 ##个人专栏
-http://blog.csdn.net/column/details/i-love-mina.html
+Mina学习实践： http://blog.csdn.net/column/details/i-love-mina.html
 
 
