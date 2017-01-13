@@ -1,0 +1,15 @@
+package com.boonya.mina.protocol.sms.bean;
+  
+option java_package = "com.boonya.mina.protocol.sms.bean";
+option java_outer_classname = "Sms";
+  
+message Sms {
+  required string protocol         = 1;
+  required string sender       = 2;
+  required string receiver         = 3;
+  required string content      = 4;
+}
+
+
+参考:http://aiilive.blog.51cto.com/1925756/1589561/
+Protocol Buffers(protobuf)在Java开发中使用:http://aiilive.blog.51cto.com/1925756/1563449

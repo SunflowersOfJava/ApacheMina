@@ -1,0 +1,11 @@
+package secondriver.mina.bo.protobuf;
+  
+option java_package = "secondriver.mina.bo.protobuf";
+option java_outer_classname = "SmsDataProtocal";
+  
+message Sms {
+  required string protocol         = 1;
+  required string sender       = 2;
+  required string receiver         = 3;
+  required string content      = 4;
+}
